@@ -1,0 +1,29 @@
+# Godot 4 - Gitignore
+
+# Imported assets
+.import/
+
+# Export templates
+export_presets.cfg
+
+# Mono (if using C#)
+.mono/
+data_*/
+mono_crash.log
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.translation
+*.m++
+*.swp
+*.swo
+
+# Godot editor cache
+.godot/
+
+# System files
+Thumbs.db
+desktop.ini
+.DS_Store
