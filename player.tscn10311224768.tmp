@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=3 uid="uid://bu73eobc1xhqi"]
+
+[ext_resource type="Script" uid="uid://cfl18vp0xnjl4" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cg3b7ycivslq3" path="res://gerenciamentogame.gd" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://wengrmi0ji2h" path="res://player_2.gd" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://df0fkqk27lxwn" path="res://bullet.gd" id="2_onrkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(6, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+size = Vector2(748.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(20, 33)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="gerenciamentogame" type="Node" parent="." node_paths=PackedStringArray("spawn_points")]
+script = ExtResource("1_hqtel")
+player_scene = null
+spawn_points = [NodePath("Spawn1"), NodePath("Spawn2")]
+max_health = null
+max_rounds = null
+
+[node name="Spawn1" type="Node2D" parent="gerenciamentogame"]
+position = Vector2(26, 33)
+
+[node name="Spawn2" type="Node2D" parent="gerenciamentogame"]
+position = Vector2(374, 30)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(58, 12)
+script = ExtResource("1_4flbx")
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+offset_left = -9.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 21.0
+color = Color(0.805633, 0.213703, 0.0445695, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(1, 11)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(352, 13)
+script = ExtResource("2_i3pqv")
+
+[node name="ColorRect" type="ColorRect" parent="Player2"]
+offset_left = -10.0
+offset_right = 10.0
+offset_bottom = 20.0
+color = Color(0.805633, 0.213703, 0.0445695, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Bullet" type="Area2D" parent="."]
+position = Vector2(74, 23)
+script = ExtResource("2_onrkg")
+
+[node name="ColorRect" type="ColorRect" parent="Bullet"]
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 4.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_i3pqv")
+
+[node name="chao" type="StaticBody2D" parent="."]
+position = Vector2(59, 34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao"]
+position = Vector2(316, 10)
+shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="ColorRect" type="ColorRect" parent="chao"]
+offset_left = -59.0
+offset_right = 690.0
+offset_bottom = 20.0
+
+[node name="parede" type="StaticBody2D" parent="."]
+position = Vector2(201, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="parede"]
+position = Vector2(26, -7)
+shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="ColorRect" type="ColorRect" parent="parede"]
+offset_left = 16.0
+offset_top = -24.0
+offset_right = 36.0
+offset_bottom = 9.0
+
+[connection signal="body_entered" from="Bullet" to="Bullet" method="_on_body_entered"]

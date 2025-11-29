@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3cqpj1f03s3f"]
+
+[ext_resource type="Script" uid="uid://c2nt4r54utsfa" path="res://Playertest.gd" id="1_mncer"]
+[ext_resource type="PackedScene" uid="uid://rs37sixlinjw" path="res://ExplosionArea.tscn" id="3_wicfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wicfy"]
+
+[sub_resource type="GDScript" id="GDScript_cguwc"]
+script/source = "extends Button
+
+@export var explosion_scene: PackedScene  # Certifique-se de que está preenchido no editor!
+
+func _ready():
+	text = \"Testar Explosão\"
+	pressed.connect(_on_pressed)
+
+func _on_pressed():
+	print(\"🧪 Cena de explosão:\", explosion_scene)
+
+	if explosion_scene == null:
+		print(\"❌ PackedScene está nulo! Atribua 'ExplosionArea.tscn' no Inspetor.\")
+		return
+
+	var explosion = explosion_scene.instantiate()
+
+	var players = get_tree().get_nodes_in_group(\"players\")
+	if players.size() > 0:
+		explosion.global_position = players[0].global_position
+	else:
+		explosion.global_position = Vector2(300, 300)  # fallback para teste
+
+	explosion.damage = 50
+	explosion.shooter = null
+	get_tree().current_scene.add_child(explosion)
+	print(\"💥 Explosão instanciada sobre o jogador\")
+"
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+collision_layer = 2
+script = ExtResource("1_mncer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_wicfy")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 21.0
+offset_bottom = 24.0
+script = SubResource("GDScript_cguwc")
+explosion_scene = ExtResource("3_wicfy")

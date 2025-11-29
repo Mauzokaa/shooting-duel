@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqbkrhbhvvg2"]
+
+[ext_resource type="Script" uid="uid://ci3w2pgsevb08" path="res://MainMenu.gd" id="1_i26rj"]
+[ext_resource type="VideoStream" uid="uid://btkipuxp0awyi" path="res://background2.ogv" id="2_eiy7p"]
+[ext_resource type="PackedScene" uid="uid://chrcalermig7f" path="res://SettingsPanel.tscn" id="3_h7a2f"]
+[ext_resource type="AudioStream" uid="uid://dcpog2dpo7rrv" path="res://musicamenu.mp3" id="4_qoqlk"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_i26rj")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+stream = ExtResource("2_eiy7p")
+autoplay = true
+expand = true
+loop = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -132.0
+offset_right = 237.0
+offset_bottom = -18.0
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Shootin Duel"
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "PLAY"
+
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Configurações"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="SettingsPanel" parent="." instance=ExtResource("3_h7a2f")]
+
+[node name="ModeSelector" type="Panel" parent="."]
+offset_left = 32.0
+offset_top = 428.0
+offset_right = 237.0
+offset_bottom = 529.0
+
+[node name="VsBotButton" type="Button" parent="ModeSelector"]
+layout_mode = 0
+offset_right = 205.0
+offset_bottom = 30.0
+text = "Jogar vs comp"
+
+[node name="PvpButton" type="Button" parent="ModeSelector"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 205.0
+offset_bottom = 66.0
+text = "Jogar PVP Local"
+
+[node name="BackButton" type="Button" parent="ModeSelector"]
+layout_mode = 0
+offset_top = 71.0
+offset_right = 205.0
+offset_bottom = 101.0
+text = "Voltar
+"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qoqlk")
+parameters/looping = true
+
+[connection signal="pressed" from="ModeSelector/BackButton" to="." method="_on_back_button_pressed"]

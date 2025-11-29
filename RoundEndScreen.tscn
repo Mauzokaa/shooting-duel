@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhe5k6han4qo1"]
+
+[ext_resource type="Script" uid="uid://be8hiiiarbxtv" path="res://round_end_screen.gd" id="1_vwufe"]
+[ext_resource type="Texture2D" uid="uid://3dv7qsd4m1jv" path="res://roundwin.png" id="2_vwufe"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_vwufe")
+
+[node name="PortraitDisplay" type="TextureRect" parent="."]
+offset_left = 697.0
+offset_top = 63.0
+offset_right = 1721.0
+offset_bottom = 1599.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vwufe")
+stretch_mode = 5
+
+[node name="ResultLabel" type="Label" parent="."]
+modulate = Color(1, 0.99, 0.99, 1)
+offset_left = 516.0
+offset_top = 74.0
+offset_right = 643.0
+offset_bottom = 97.0
+text = "Player x Ganhou"
+
+[node name="ScoreLabel" type="Label" parent="."]
+modulate = Color(1, 0.99, 0.99, 1)
+offset_left = 348.0
+offset_top = 122.0
+offset_right = 475.0
+offset_bottom = 145.0
+text = "Placar:\\nPlayer1: 1\\nPlayer2: 0"

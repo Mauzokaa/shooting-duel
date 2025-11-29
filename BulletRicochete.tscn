@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddadatn66e0n8"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://dsrx10cb4r44u" path="res://bullet_material.tres" id="1_2hpm0"]
+[ext_resource type="Script" uid="uid://df0fkqk27lxwn" path="res://bullet.gd" id="1_bv25d"]
+[ext_resource type="Texture2D" uid="uid://cwu386lb2poys" path="res://Copilot_20250918_132738 (1).png" id="2_2hpm0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7oki"]
+size = Vector2(36, 28)
+
+[node name="Bullet" type="RigidBody2D"]
+light_mask = 2
+collision_layer = 4
+collision_mask = 9
+physics_material_override = ExtResource("1_2hpm0")
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_bv25d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_v7oki")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(0.031, 0.03)
+texture = ExtResource("2_2hpm0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

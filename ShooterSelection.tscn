@@ -1,0 +1,113 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxnesysuf4v1a"]
+
+[ext_resource type="Script" uid="uid://cjajkac4clw8a" path="res://ShooterSelection.gd" id="1_wev6o"]
+[ext_resource type="PackedScene" uid="uid://bu73eobc1xhqi" path="res://player.tscn" id="2_a03hp"]
+[ext_resource type="PackedScene" uid="uid://bbf25yo8qtblv" path="res://PlayerBase.tscn" id="3_a4c8c"]
+[ext_resource type="Texture2D" uid="uid://dll27gohptjly" path="res://yumiicon.png" id="4_a4c8c"]
+[ext_resource type="Texture2D" uid="uid://dj57ljgxwn7qa" path="res://gabicon.png" id="5_mdm8s"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wev6o")
+yumi_scene = ExtResource("2_a03hp")
+gab_scene = ExtResource("3_a4c8c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.163
+anchor_top = 0.5
+anchor_right = 3.163
+anchor_bottom = 0.5
+offset_left = -96.52
+offset_top = 410.0
+offset_right = 12.48
+offset_bottom = 530.0
+
+[node name="YumiButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Yumi"
+
+[node name="GabButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Gab"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Voltar"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 377.0
+offset_right = 154.0
+offset_bottom = 421.0
+
+[node name="InfoPanel" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 190.0
+offset_right = 931.0
+offset_bottom = 858.0
+scale = Vector2(0.8, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="InfoPanel"]
+layout_mode = 2
+texture = ExtResource("4_a4c8c")
+
+[node name="Panel" type="Panel" parent="InfoPanel"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="InfoPanel/Panel"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Yumi - Ágil e precisa, domina o arco com maestria.
+ Suas flechas não apenas cortam o ar com
+ velocidade, elas podem ser rebatidas,
+ criando trajetórias imprevisíveis e ataques
+ em cadeia que confundem seus inimigos.
+ Com sua postura firme e olhar determinado,
+ Yumi é a estrategista do grupo, sempre um
+ passo à frente no campo de batalha."
+uppercase = true
+
+[node name="InfoPanel2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 302.0
+offset_top = 201.0
+offset_right = 934.0
+offset_bottom = 1071.0
+scale = Vector2(0.8, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="InfoPanel2"]
+layout_mode = 2
+texture = ExtResource("5_mdm8s")
+
+[node name="Panel" type="Panel" parent="InfoPanel2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InfoPanel2/Panel"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Gab - Ele é pura força bruta. Carregando um lança-
+míssil sobre o ombro, ele transforma cada
+disparo emuma explosão devastadora. Seus
+ataques emárea são perfeitos para abrir
+caminho para a vitória, e sua presença
+imponenteinspira aliados e intimida adversários."
+uppercase = true
+
+[connection signal="mouse_entered" from="VBoxContainer/YumiButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/YumiButton" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/YumiButton" to="." method="_on_yumi_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/GabButton" to="." method="_on_gab_button_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/GabButton" to="." method="_on_gab_button_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/GabButton" to="." method="_on_gab_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_back_button_pressed"]

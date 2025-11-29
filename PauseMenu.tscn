@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://gdnxg1uje7sv"]
+
+[ext_resource type="Script" uid="uid://b06cqxsdglpiu" path="res://PauseMenu.gd" id="1_nov15"]
+[ext_resource type="PackedScene" uid="uid://chrcalermig7f" path="res://SettingsPanel.tscn" id="2_etnfi"]
+[ext_resource type="Script" uid="uid://4jek0hdod4fs" path="res://SettingsPanel.gd" id="3_q775a"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_nov15")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 721.0
+offset_top = 328.0
+offset_right = 1067.0
+offset_bottom = 709.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 348.0
+offset_bottom = 255.0
+
+[node name="ContinueButton" type="Button" parent="Panel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Continue"
+
+[node name="SettingsButton" type="Button" parent="Panel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Configurações"
+
+[node name="MainMenuButton" type="Button" parent="Panel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Voltar ao Menu"
+
+[node name="SettingsPanel" parent="." instance=ExtResource("2_etnfi")]
+visible = false
+script = ExtResource("3_q775a")

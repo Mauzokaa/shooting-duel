@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf4y353e2yx58"]
+
+[ext_resource type="Script" uid="uid://j3lhxydwaxph" path="res://MapSelection.gd" id="1_scf7p"]
+[ext_resource type="Texture2D" uid="uid://cli0lftw1cjsn" path="res://ChatGPT Image 7 de out. de 2025, 18_00_35.png" id="2_ygw7f"]
+[ext_resource type="Texture2D" uid="uid://2buit5n6p2mo" path="res://floresta.png" id="3_tgj4w"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 40.0
+script = ExtResource("1_scf7p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 429.0
+offset_right = 90.0
+offset_bottom = 495.0
+
+[node name="Espacobutton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Área Espacial"
+
+[node name="Florestabutton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Floresta Mutante"
+
+[node name="Botbutton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Mapatestebot
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 394.0
+offset_right = 156.0
+offset_bottom = 417.0
+text = "Escolha o Mapa"
+
+[node name="InfoPanelMap1" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 432.0
+offset_right = 623.0
+offset_bottom = 1037.0
+
+[node name="TextureRect" type="TextureRect" parent="InfoPanelMap1"]
+layout_mode = 2
+texture = ExtResource("2_ygw7f")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="InfoPanelMap1"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Área Espacial - Um campo de batalha suspenso
+ no vazio do cosmos. Estrelas distantes piscam
+ entre faixas de poeira estelar em tons de roxo e
+ rosa, enquanto plataformas flutuam como
+ destroços de uma antiga estação espacial. O
+ silêncio do espaço é quebrado apenas pelas
+ explosões e o eco metálico dos confrontos. Este
+ mapa oferece mobilidade aérea e
+ posicionamento estratégico, ideal para
+ combates intensos e imprevisíveis. Aqui, cada
+ salto é um risco — e cada disparo pode mudar
+ o rumo da luta."
+uppercase = true
+
+[node name="InfoPanelMap2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 434.0
+offset_right = 615.0
+offset_bottom = 1037.0
+
+[node name="TextureRect" type="TextureRect" parent="InfoPanelMap2"]
+layout_mode = 2
+texture = ExtResource("3_tgj4w")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="InfoPanelMap2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "Floresta Mutante - Uma floresta ancestral onde
+ a natureza pulsa com energia misteriosa.
+ Árvores gigantescas formam um teto verde
+ sobre o campo de batalha, enquanto pequenas
+ luzes flutuantes — talvez insetos, talvez magia
+ — iluminam o chão coberto por raízes e
+ vegetação densa. O terreno oferece cobertura
+ natural e caminhos ocultos entre as sombras.
+ Neste mapa, o silêncio é aliado e o ambiente
+ pode ser tão perigoso quanto os inimigos.
+ Ideal para emboscadas, estratégias furtivas e
+ duelos intensos sob a copa das árvores."
+uppercase = true
+
+[connection signal="mouse_entered" from="VBoxContainer/Espacobutton" to="." method="_on_espacobutton_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Espacobutton" to="." method="_on_espacobutton_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Espacobutton" to="." method="_on_espacobutton_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/Florestabutton" to="." method="_on_florestabutton_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/Florestabutton" to="." method="_on_florestabutton_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/Florestabutton" to="." method="_on_florestabutton_pressed"]
+[connection signal="pressed" from="VBoxContainer/Botbutton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Botbutton" to="." method="_on_botbutton_pressed"]

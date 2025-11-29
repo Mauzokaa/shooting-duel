@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfc7m8kc856"]
+
+[ext_resource type="Script" uid="uid://bym836r466k5r" path="res://control.gd" id="1_0fbet"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 76.0
+offset_bottom = 40.0
+script = ExtResource("1_0fbet")
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 5.0
+offset_right = 116.0
+offset_bottom = 36.0
+text = "Testa Clique"
